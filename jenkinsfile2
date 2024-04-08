@@ -8,6 +8,7 @@ pipeline {
             steps {
                 // Your build steps here
                 // For example: Maven build, compile, etc.
+               sh 'mvn -version'
             }
         }
     }
