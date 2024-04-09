@@ -44,7 +44,8 @@ def deployWarToTomcat(Map params) {
     
     // Deploy WAR/EAR to Tomcat using the Deploy plugin
     echo "Deploying WAR files to Tomcat..."
-    deploy adapters: [tomcat8(credentialsId: 'tomcat-credentials', url: tomcatUrl, path: '/')], contextPath: '', war: warFiles
+          deploy adapters: [tomcat8(credentialsId: 'tomcat-credentials', url: tomcatUrl, path: '/manager/text')], contextPath: '', war: warFiles
+
 }
 
 
