@@ -17,15 +17,7 @@ pipeline {
         }
        
    
-    stage('Build') {
-          
-            steps {
-                // Your build steps here
-                // For example: Maven build, compile, etc.
 
-               copyArtifacts(projectName: 'package', selector: specific('**/*.war'))
-            }
-        }
  }
     
     post {
