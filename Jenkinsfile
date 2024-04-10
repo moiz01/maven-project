@@ -11,17 +11,14 @@ pipeline {
         steps {
             // Copy artifacts from another project
             script {
-                // Define the parameters
-                def project_name = 'package'
-                def artifact_to_copy = '**/*.war'
-                // Copy the artifacts
-                    build job: project_name, parameters: [[$class: 'BuildTriggerConfig', 
-                    projects: '', 
-                    condition: 'SUCCESS']], 
-                    propagate: false, 
-                    wait: true
-                    // Copy the artifact to desired location
-                    sh "cp ${project_name}/${artifact_to_copy} ."
+                  // Define the parameters
+                    def project_name = 'package'
+                    def artifact_to_copy = '**/*.war'
+                    
+                    // Copy artifacts from another project
+                    copyArtifacts projectName: project_name, 
+                                  filter: artifact_to_copy, 
+                                  flatten: true
                 }
             }
         }
