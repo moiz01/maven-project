@@ -7,14 +7,21 @@ pipeline {
     }
     
     stages {
-     stage('Build war'){
-            steps {
-                sh 'mvn clean package'
-            }
-            post {
-                success {
-                    echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/target/*.war'
+    stage('Build') {
+        steps {
+            // Copy artifacts from another project
+            script {
+                // Define the parameters
+                def project_name = 'package'
+                def artifact_to_copy = '**/*.war'
+                // Copy the artifacts
+                    build job: project_name, parameters: [[$class: 'BuildTriggerConfig', 
+                    projects: '', 
+                    condition: 'SUCCESS']], 
+                    propagate: false, 
+                    wait: true
+                    // Copy the artifact to desired location
+                    sh "cp ${project_name}/${artifact_to_copy} ."
                 }
             }
         }
@@ -30,7 +37,7 @@ pipeline {
                 warFiles: '**/*.war',
                 managerUser: 'admin',
                 managerPassword: 'rp@P8on!',
-                tomcatUrl: 'http://18.234.220.117:8090'
+                tomcatUrl: 'http://54.91.14.25:8090'
             )
         }
     }
