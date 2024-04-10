@@ -34,7 +34,7 @@ pipeline {
                 warFiles: '**/*.war',
                 managerUser: 'admin',
                 managerPassword: 'rp@P8on!',
-                tomcatUrl: 'http://54.91.14.25:8090'
+                tomcatUrl: 'http://18.234.220.117:8090'
             )
         }
     }
