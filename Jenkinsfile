@@ -7,15 +7,21 @@ pipeline {
     // }
     
     stages {
-    stage('Build') {
-         step ([$class: 'CopyArtifact',
+         stage('Copy Archive') {
+         steps {
+             script {
+                step ([$class: 'CopyArtifact',
                     projectName: 'package',
                     filter: "webapp/target/*.war",
                     target: 'Infra']);
+            }
+        }
+    }
+    
         
  
 
-        }
+        
        
     }
 
