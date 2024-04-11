@@ -29,17 +29,17 @@ pipeline {
 
  }
     
-    post {
-        always {
-            // Deploy WAR/EAR to Tomcat
-            deployWarToTomcat(
-                warFiles: '**/*.war',
-                managerUser: 'admin',
-                managerPassword: 'rp@P8on!',
-                tomcatUrl: 'http://34.236.242.150:8090'
-            )
-        }
-    }
+    // post {
+    //     always {
+    //         // Deploy WAR/EAR to Tomcat
+    //         deployWarToTomcat(
+    //             warFiles: '**/*.war',
+    //             managerUser: 'admin',
+    //             managerPassword: 'rp@P8on!',
+    //             tomcatUrl: 'http://34.236.242.150:8090'
+    //         )
+    //     }
+    // }
 }
 
 def deployWarToTomcat(Map params) {
