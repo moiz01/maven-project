@@ -13,12 +13,14 @@ pipeline {
             script {
                   // Define the parameters
                     def project_name = 'package'
+                    def artifactDir = 'webapp/target'
+                    def artifactPattern = '*.war'
                     def artifact_to_copy = '**/target/*.war'
                     
                     // Copy artifacts from another project
                     copyArtifacts projectName: project_name, 
-                                  filter: artifact_to_copy, 
-                                  target: 'Infra'
+                                   filter: artifactPattern,
+                                  target: artifactDir
                 }
             }
         }
