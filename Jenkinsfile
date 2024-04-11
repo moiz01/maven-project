@@ -12,7 +12,7 @@ pipeline {
              script {
                 step ([$class: 'CopyArtifact',
                     projectName: 'package',
-                    filter: "webapp/target/*.war",
+                    filter: "**/webapp/target/webapp.war",
                     target: 'Infra']);
             }
         }
