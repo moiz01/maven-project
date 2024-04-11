@@ -12,7 +12,17 @@ pipeline {
             // Copy artifacts from another project
              copyArtifacts(projectName: 'package');
 
-            // script {
+            script {
+             // Define the upstream project name
+                    def upstreamProject = 'package'
+                    // Define the artifact file name pattern
+                    def artifactPattern = '**/*.war'
+
+                    // Copy the artifact from the upstream project
+                    copyArtifacts(
+                        projectName: upstreamProject,
+                        filter: artifactPattern
+                    )
             //       // Define the parameters
             //         def project_name = 'package'
             //         def artifactDir = 'webapp/target'
@@ -23,7 +33,7 @@ pipeline {
             //         copyArtifacts projectName: project_name, 
             //                        filter: artifactPattern,
             //                       target: artifactDir
-            //     }
+                }
             }
         }
        
