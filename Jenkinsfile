@@ -21,7 +21,8 @@ pipeline {
                     // Copy the artifact from the upstream project
                     copyArtifacts(
                         projectName: upstreamProject,
-                        filter: artifactPattern
+                        filter: artifactPattern,
+                        flatten: false
                     )
             //       // Define the parameters
             //         def project_name = 'package'
