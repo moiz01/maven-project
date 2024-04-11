@@ -10,18 +10,20 @@ pipeline {
     stage('Build') {
         steps {
             // Copy artifacts from another project
-            script {
-                  // Define the parameters
-                    def project_name = 'package'
-                    def artifactDir = 'webapp/target'
-                    def artifactPattern = '*.war'
-                    def artifact_to_copy = '**/target/*.war'
+             copyArtifacts(projectName: 'package');
+
+            // script {
+            //       // Define the parameters
+            //         def project_name = 'package'
+            //         def artifactDir = 'webapp/target'
+            //         def artifactPattern = '*.war'
+            //         def artifact_to_copy = '**/target/*.war'
                     
-                    // Copy artifacts from another project
-                    copyArtifacts projectName: project_name, 
-                                   filter: artifactPattern,
-                                  target: artifactDir
-                }
+            //         // Copy artifacts from another project
+            //         copyArtifacts projectName: project_name, 
+            //                        filter: artifactPattern,
+            //                       target: artifactDir
+            //     }
             }
         }
        
