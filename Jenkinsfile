@@ -8,37 +8,16 @@ pipeline {
     
     stages {
     stage('Build') {
-        steps {
-            // Copy artifacts from another project
-             copyArtifacts(projectName: 'package');
+         step ([$class: 'CopyArtifact',
+                    projectName: 'package',
+                    filter: "webapp/target/*.war",
+                    target: 'Infra']);
+        
+ 
 
-            script {
-             // Define the upstream project name
-                    def upstreamProject = 'package'
-                    // Define the artifact file name pattern
-                    def artifactPattern = '**/*.war'
-
-                    // Copy the artifact from the upstream project
-                    copyArtifacts(
-                        projectName: upstreamProject,
-                        filter: artifactPattern,
-                        flatten: false
-                    )
-            //       // Define the parameters
-            //         def project_name = 'package'
-            //         def artifactDir = 'webapp/target'
-            //         def artifactPattern = '*.war'
-            //         def artifact_to_copy = '**/target/*.war'
-                    
-            //         // Copy artifacts from another project
-            //         copyArtifacts projectName: project_name, 
-            //                        filter: artifactPattern,
-            //                       target: artifactDir
-                }
-            }
         }
        
-   
+    }
 
  }
     
